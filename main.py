@@ -1,3 +1,5 @@
+# pip install "fastapi[standard]" "uvicorn[standard]" sqlalchemy python-dotenv pydantic
+
 from fastapi import FastAPI, Body
 
 
@@ -14,7 +16,7 @@ def get_post():
     }
     
 @app.post('/createpost')
-def create_post(payLoad: dict = Body):
+def create_post(payLoad: dict = Body(...)):
     print(payLoad)
     return {
         'message': 'successfully created post',
