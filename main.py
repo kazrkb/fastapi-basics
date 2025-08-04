@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Body
+
 
 app = FastAPI()
 
@@ -10,4 +11,11 @@ def read_root():
 def get_post():
     return {
         'data': 'this is your post'
+    }
+    
+@app.post('/createpost')
+def create_post(payLoad: dict = Body(...)):
+    print(payLoad)
+    return {
+        'message': 'successfully created post'
     }
