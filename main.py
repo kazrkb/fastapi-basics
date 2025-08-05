@@ -27,10 +27,11 @@ def get_post():
 # def create_post(payLoad: dict = Body(...)):
 def create_post(new_post: Post):
     # print(payLoad)
-    print(new_post.publish)
-    print(new_post.rating)
+    print(new_post)
+    print(new_post.dict())
+    
     return {
         # 'message': 'successfully created post',
         # 'newpost': f"title {payLoad['title']} content {payLoad['content']}"
-        "data": "new post successful"
+        "data": new_post
     }
