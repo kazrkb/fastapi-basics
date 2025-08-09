@@ -38,10 +38,16 @@ def get_posts():
 @app.post('/posts')
 # def create_post(payLoad: dict = Body(...)):
 def create_post(new_post: Post):
-    my_posts.append(new_post.dict())
-    
+    post_dict = new_post.dict()
+    post_dict['id'] = randrange(1, 1000000)
+    my_posts.append(post_dict)
     return {
-        # 'message': 'successfully created post',
-        # 'newpost': f"title {payLoad['title']} content {payLoad['content']}"
-        "data": new_post
+        "data": post_dict
     }
+@app.get("/posts/{id}")
+def get_single_post(id):
+    print(id)
+    return {
+        "post_data": f"This is the post with id {id}"
+    }
+
